@@ -1,38 +1,166 @@
-.App {
-  text-align: center;
+:root {
+  --dark: #374151;
+  --darker: #1f2937;
+  --darkest: #111827;
+  --grey: #6b7280;
+  --pink: #ec4899;
+  --purple: #9168f7;
+  --light: #eee;
 }
 
-.App-logo {
-  height: 40vmin;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(60deg, var(--dark), var(--darker));
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+h1 {
+  text-shadow: 3.5px 3.5px 3.5px #2c2c2c;
+}
+
+header {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--grey);
+}
+
+header, form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form input, form button {
+  padding: 1rem;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+}
+
+form input, select {
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  background: var(--darker);
+  color: var(--light);
+}
+
+form button {
+  color: var(--grey);
+  background: var(--darker);
+  cursor: pointer; 
+  transition: all 0.3s ease;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+form button:hover {
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo-list {
+  min-width: 30%;
+  list-style: none;
+}
+
+.todo {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  padding-left: 0.75rem;
+  color: var(--light);
+  background: var(--darkest);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  transition: all 0.5s ease;
+}
+
+.todo li {
+  flex: 1;
+}
+.trash-btn, .complete-btn {
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  background: var(--darkest);
+  color: var(--light);
+  transition: all 0.3s ease;
+}
+.trash-btn {
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.trash-btn:hover {
+  color: crimson;
+}
+.complete-btn:hover {
+  color: rgb(35, 211, 50);
+}
+
+.fa-trash, .fa-check {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;               
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+select {
+  color: var(--grey);
+  width: 10rem;
+  cursor: pointer;
+  background: var(--darker);
+  padding: 1rem; 
+  border-bottom-right-radius: 1.25rem;
+  border-top-right-radius: 1.15rem;
+}
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  color: var(--grey);
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;
+  border-bottom-right-radius: 1.5rem;
+  border-top-right-radius: 1rem;
+}
+.select:hover::after {
+  opacity: 0.4;
+  transition: all 0.3s ease;
 }
