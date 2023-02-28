@@ -1,18 +1,20 @@
 import React from "react";
+// Import component
+import Todo from "./Todo";
 
-const TodoList = () => {
+const TodoList = ({ todos, setTodos }) => {
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        {/* <div className="todo">
-          <li className="todo-item">moo</li>
-          <button className="complete-btn">
-            <i className="fas fa-check"></i>
-          </button>
-          <button className="trash-btn">
-            <i className="fas fa-trash"></i>
-          </button>
-        </div> */}
+        {todos.map((todo) => (
+          <Todo
+            todos={todos}
+            setTodos={setTodos}
+            text={todo.text}
+            todo={todo}
+            key={todo.id}
+          />
+        ))}
       </ul>
     </div>
   );
