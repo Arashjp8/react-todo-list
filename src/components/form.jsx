@@ -1,28 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 
-const Form = ({ inputText, setInputText, setTodos, todos }) => {
-  const inputTextHandler = (input) => {
-    console.log(input.target.value);
-    setInputText(input.target.value);
-  };
+const Form = ({ setTodos, todos }) => {
+  const inputRef = useRef();
 
   const submitTodoHandler = (todo) => {
     todo.preventDefault();
     setTodos([
       ...todos,
-      { text: inputText, completed: false, id: Math.random() * 1000 },
+      {
+        text: inputRef.current.value,
+        completed: false,
+        id: Math.random() * 1000,
+      },
     ]);
-    setInputText("");
+    inputRef.current.value = "";
   };
 
   return (
     <form>
-      <input
-        value={inputText}
-        onChange={inputTextHandler}
-        type="text"
-        className="todo-input"
-      />
+      <input ref={inputRef} type="text" className="todo-input" />
       <button onClick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
