@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Todo = ({ text, todo, todos, setTodos }) => {
-  const [isActive, setActive] = useState(false);
+  const [isCompleted, setCompleted] = useState(false);
 
   //events
   const deleteHandler = () => {
@@ -10,12 +10,12 @@ const Todo = ({ text, todo, todos, setTodos }) => {
 
   const completeHandler = () => {
     todos.map((t) => {
-      if (todo.id === t.id) setActive(!isActive);
+      if (todo.id === t.id) setCompleted(!isCompleted);
     });
   };
 
   return (
-    <div className={`todo ${isActive ? "completed" : ""}`}>
+    <div className={`todo ${isCompleted ? "completed" : ""}`}>
       <li className="todo-item">{text}</li>
       <button onClick={completeHandler} className="complete-btn">
         <i className="fas fa-check"></i>
